@@ -1,0 +1,6 @@
+package com.levelchef.levelchef
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
