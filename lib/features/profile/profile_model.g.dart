@@ -17,6 +17,7 @@ _$_ProfileModel _$$_ProfileModelFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$ExperienceEnumMap, json['experience']) ??
               Experience.novice,
       experiencePoints: json['experience_points'] as int? ?? 0,
+      path: $enumDecodeNullable(_$PathEnumMap, json['path']) ?? Path.none,
       allergies: (json['allergies'] as List<dynamic>?)
               ?.map((e) => $enumDecode(_$AllergyEnumMap, e))
               .toList() ??
@@ -44,6 +45,7 @@ Map<String, dynamic> _$$_ProfileModelToJson(_$_ProfileModel instance) =>
       'bio': instance.bio,
       'experience': _$ExperienceEnumMap[instance.experience]!,
       'experience_points': instance.experiencePoints,
+      'path': _$PathEnumMap[instance.path]!,
       'allergies': instance.allergies.map((e) => _$AllergyEnumMap[e]!).toList(),
       'appliances':
           instance.appliances.map((e) => _$ApplianceEnumMap[e]!).toList(),
@@ -58,6 +60,14 @@ const _$ExperienceEnumMap = {
   Experience.cook: 'cook',
   Experience.chef: 'chef',
   Experience.proChef: 'proChef',
+};
+
+const _$PathEnumMap = {
+  Path.none: 'none',
+  Path.family: 'family',
+  Path.veggie: 'veggie',
+  Path.hearty: 'hearty',
+  Path.primal: 'primal',
 };
 
 const _$AllergyEnumMap = {
@@ -77,12 +87,13 @@ const _$ApplianceEnumMap = {
   Appliance.airFryer: 'airFryer',
   Appliance.instantPot: 'instantPot',
   Appliance.blender: 'blender',
+  Appliance.foodProcessor: 'foodProcessor',
 };
 
 const _$SmallWareEnumMap = {
   SmallWare.mortarAndPestle: 'mortarAndPestle',
-  SmallWare.pot: 'pot',
-  SmallWare.pan: 'pan',
+  SmallWare.pots: 'pots',
+  SmallWare.pans: 'pans',
   SmallWare.bakingSheet: 'bakingSheet',
 };
 

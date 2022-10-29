@@ -28,6 +28,7 @@ mixin _$ProfileModel {
   Experience get experience => throw _privateConstructorUsedError;
   @JsonKey(name: 'experience_points')
   int get experiencePoints => throw _privateConstructorUsedError;
+  Path get path => throw _privateConstructorUsedError;
   List<Allergy> get allergies => throw _privateConstructorUsedError;
   List<Appliance> get appliances => throw _privateConstructorUsedError;
   @JsonKey(name: 'small_wares')
@@ -54,6 +55,7 @@ abstract class $ProfileModelCopyWith<$Res> {
       String bio,
       Experience experience,
       @JsonKey(name: 'experience_points') int experiencePoints,
+      Path path,
       List<Allergy> allergies,
       List<Appliance> appliances,
       @JsonKey(name: 'small_wares') List<SmallWare> smallWares,
@@ -80,6 +82,7 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
     Object? bio = null,
     Object? experience = null,
     Object? experiencePoints = null,
+    Object? path = null,
     Object? allergies = null,
     Object? appliances = null,
     Object? smallWares = null,
@@ -114,6 +117,10 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
           ? _value.experiencePoints
           : experiencePoints // ignore: cast_nullable_to_non_nullable
               as int,
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as Path,
       allergies: null == allergies
           ? _value.allergies
           : allergies // ignore: cast_nullable_to_non_nullable
@@ -150,6 +157,7 @@ abstract class _$$_ProfileModelCopyWith<$Res>
       String bio,
       Experience experience,
       @JsonKey(name: 'experience_points') int experiencePoints,
+      Path path,
       List<Allergy> allergies,
       List<Appliance> appliances,
       @JsonKey(name: 'small_wares') List<SmallWare> smallWares,
@@ -174,6 +182,7 @@ class __$$_ProfileModelCopyWithImpl<$Res>
     Object? bio = null,
     Object? experience = null,
     Object? experiencePoints = null,
+    Object? path = null,
     Object? allergies = null,
     Object? appliances = null,
     Object? smallWares = null,
@@ -208,6 +217,10 @@ class __$$_ProfileModelCopyWithImpl<$Res>
           ? _value.experiencePoints
           : experiencePoints // ignore: cast_nullable_to_non_nullable
               as int,
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as Path,
       allergies: null == allergies
           ? _value._allergies
           : allergies // ignore: cast_nullable_to_non_nullable
@@ -239,6 +252,7 @@ class _$_ProfileModel implements _ProfileModel {
       this.bio = '',
       this.experience = Experience.novice,
       @JsonKey(name: 'experience_points') this.experiencePoints = 0,
+      this.path = Path.none,
       final List<Allergy> allergies = const [],
       final List<Appliance> appliances = const [],
       @JsonKey(name: 'small_wares') final List<SmallWare> smallWares = const [],
@@ -272,6 +286,9 @@ class _$_ProfileModel implements _ProfileModel {
   @override
   @JsonKey(name: 'experience_points')
   final int experiencePoints;
+  @override
+  @JsonKey()
+  final Path path;
   final List<Allergy> _allergies;
   @override
   @JsonKey()
@@ -306,7 +323,7 @@ class _$_ProfileModel implements _ProfileModel {
 
   @override
   String toString() {
-    return 'ProfileModel(name: $name, email: $email, handle: $handle, avatar: $avatar, bio: $bio, experience: $experience, experiencePoints: $experiencePoints, allergies: $allergies, appliances: $appliances, smallWares: $smallWares, diets: $diets)';
+    return 'ProfileModel(name: $name, email: $email, handle: $handle, avatar: $avatar, bio: $bio, experience: $experience, experiencePoints: $experiencePoints, path: $path, allergies: $allergies, appliances: $appliances, smallWares: $smallWares, diets: $diets)';
   }
 
   @override
@@ -323,6 +340,7 @@ class _$_ProfileModel implements _ProfileModel {
                 other.experience == experience) &&
             (identical(other.experiencePoints, experiencePoints) ||
                 other.experiencePoints == experiencePoints) &&
+            (identical(other.path, path) || other.path == path) &&
             const DeepCollectionEquality()
                 .equals(other._allergies, _allergies) &&
             const DeepCollectionEquality()
@@ -343,6 +361,7 @@ class _$_ProfileModel implements _ProfileModel {
       bio,
       experience,
       experiencePoints,
+      path,
       const DeepCollectionEquality().hash(_allergies),
       const DeepCollectionEquality().hash(_appliances),
       const DeepCollectionEquality().hash(_smallWares),
@@ -371,6 +390,7 @@ abstract class _ProfileModel implements ProfileModel {
       final String bio,
       final Experience experience,
       @JsonKey(name: 'experience_points') final int experiencePoints,
+      final Path path,
       final List<Allergy> allergies,
       final List<Appliance> appliances,
       @JsonKey(name: 'small_wares') final List<SmallWare> smallWares,
@@ -394,6 +414,8 @@ abstract class _ProfileModel implements ProfileModel {
   @override
   @JsonKey(name: 'experience_points')
   int get experiencePoints;
+  @override
+  Path get path;
   @override
   List<Allergy> get allergies;
   @override

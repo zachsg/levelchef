@@ -81,6 +81,7 @@ const _$ApplianceEnumMap = {
   Appliance.airFryer: 'airFryer',
   Appliance.instantPot: 'instantPot',
   Appliance.blender: 'blender',
+  Appliance.foodProcessor: 'foodProcessor',
 };
 
 const _$DietEnumMap = {

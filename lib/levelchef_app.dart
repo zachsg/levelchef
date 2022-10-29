@@ -7,7 +7,6 @@ import 'features/auth/auth_gate.dart';
 import 'features/bottom_navigation/bottom_navigation_view.dart';
 import 'features/bundles/bundles_view.dart';
 import 'features/discover/discover_view.dart';
-import 'features/profile/created_bundles/created_bindls_view.dart';
 import 'features/profile/created_bundles/created_bundles_view.dart';
 import 'features/profile/created_recipes/created_recipes_view.dart';
 import 'features/profile/preferences/preferences_view.dart';

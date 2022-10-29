@@ -1,16 +1,31 @@
-# levelchef
+# LevelChef
 
-A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Building
+- `flutter clean`
+- `flutter pub get`
+- Delete Podfile.lock
+- `arch -x86_64 pod repo update`
+- `arch -x86_64 pod install`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Code generation:
+- `flutter pub run build_runner watch --delete-conflicting-outputs` 
+Or:
+- `dart run build_runner watch`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Splash page:
+1. `flutter pub run flutter_native_splash:remove`
+2. `flutter pub run flutter_native_splash:create`
+
+### Release builds
+Android: build app bundle:
+- `flutter build appbundle`
+
+iOS:
+1. Open XCWorkspace file in ios/ directory in Xcode
+2. Set build target to `Any iOS device (arm64)
+3. Product > Archive
+4. Go through distribution flow once built to send to Appstore Connect

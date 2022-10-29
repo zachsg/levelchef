@@ -10,7 +10,7 @@ class BioWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-      child: Text(ref.read(profileProvider).bio),
+      child: Text(ref.watch(profileProvider).bio),
     );
   }
 }

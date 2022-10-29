@@ -1,6 +1,6 @@
 enum SmallWare {
   mortarAndPestle,
-  pot,
-  pan,
+  pots,
+  pans,
   bakingSheet,
 }
