@@ -14,7 +14,7 @@ part 'recipe.g.dart';
 @unfreezed
 class Recipe with _$Recipe {
   factory Recipe({
-    int? id,
+    String? id,
     @JsonKey(name: 'updated_at') required String updatedAt,
     @JsonKey(name: 'owner_id') required String ownerId,
     required String name,

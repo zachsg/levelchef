@@ -6,6 +6,7 @@ class Database {
   static final db = FirebaseFirestore.instance;
 
   static const profilesCollection = 'profiles';
+  static const recipesCollection = 'recipes';
 
   static Future<DocumentSnapshot<Map<String, dynamic>>> currentProfile() async {
     final id = Auth.instance.currentUser?.uid;
@@ -22,6 +23,25 @@ class Database {
         .collection(profilesCollection)
         .doc(Auth.instance.currentUser?.uid)
         .update(updates);
+  }
+
+  static Future<void> createRecipe(
+      String id, Map<String, dynamic> updates) async {
+    await db.collection(recipesCollection).doc(id).set(updates);
+  }
+
+  static Future<void> updateRecipe(
+      String id, Map<String, dynamic> updates) async {
+    await db.collection(recipesCollection).doc(id).update(updates);
+  }
+
+  static Stream<QuerySnapshot> createdRecipes() {
+    final id = Auth.instance.currentUser?.uid;
+
+    return db
+        .collection(recipesCollection)
+        .where('owner_id', isEqualTo: id)
+        .snapshots();
   }
 
   // static Stream<QuerySnapshot> undoneTasks() {

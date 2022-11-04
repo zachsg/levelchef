@@ -28,7 +28,7 @@ const nameLabel = 'Name';
 const handleLabel = 'Handle';
 const bioLabel = 'About me';
 const signOutLabel = 'Sign Out';
-const profileUpdatedLabel = 'Your profile was updated';
+const profileUpdatedLabel = 'Your profile was updated.';
 
 /// Preferences
 const pathLabel = 'Path';
@@ -43,3 +43,11 @@ const appliancesLabel = 'Kitchen Appliances';
 const appliancesSubtitleLabel = 'Select all of the appliances you own.';
 const smallWaresLabel = 'Small Wares';
 const smallWaresSubtitleLabel = 'Select all of the small wares you own.';
+
+/// Created recipes
+const recipeLabel = 'Recipe';
+const recipeSavedLabel = 'Recipe has been saved.';
+const noRecipeCreatedLabel = 'You haven\'t created any recipes yet';
+
+/// Created recipe
+const newRecipeLabel = 'New Recipe';

@@ -8,6 +8,7 @@ import 'features/bottom_navigation/bottom_navigation_view.dart';
 import 'features/bundles/bundles_view.dart';
 import 'features/discover/discover_view.dart';
 import 'features/profile/created_bundles/created_bundles_view.dart';
+import 'features/profile/created_recipes/created_recipe/created_recipe_view.dart';
 import 'features/profile/created_recipes/created_recipes_view.dart';
 import 'features/profile/preferences/preferences_view.dart';
 import 'features/profile/profile_view.dart';
@@ -94,6 +95,13 @@ class _LevelChefAppState extends State<LevelChefApp> {
                   name: CreatedRecipesView.routeName,
                   path: CreatedRecipesView.routeName,
                   builder: (context, state) => const CreatedRecipesView(),
+                  routes: [
+                    GoRoute(
+                      name: CreatedRecipeView.routeName,
+                      path: CreatedRecipeView.routeName,
+                      builder: (context, state) => const CreatedRecipeView(),
+                    ),
+                  ],
                 ),
                 GoRoute(
                   name: CreatedBundlesView.routeName,

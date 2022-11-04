@@ -29,7 +29,7 @@ class AvatarDisplayWidget extends ConsumerWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           errorWidget: (context, url, error) => Icon(
-            Icons.face,
+            Icons.error,
             size: 84,
             color: Theme.of(context).colorScheme.primary,
           ),

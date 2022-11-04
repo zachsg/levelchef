@@ -6,6 +6,7 @@ import 'package:levelchef/strings.dart';
 import '../created_bundles/created_bundles_view.dart';
 import '../created_recipes/created_recipes_view.dart';
 import '../preferences/preferences_view.dart';
+import '../profile_controller.dart';
 
 class ProfileDetailsListViewWidget extends ConsumerWidget {
   const ProfileDetailsListViewWidget({super.key});
@@ -30,6 +31,7 @@ class ProfileDetailsListViewWidget extends ConsumerWidget {
             title: const Text(createdRecipesLabel),
             trailing: const Icon(Icons.navigate_next),
             onTap: () {
+              ref.read(profileProvider.notifier).setupCreatedRecipes();
               context.pushNamed(CreatedRecipesView.routeName);
             },
           ),

@@ -9,13 +9,16 @@ import '../../models/allergy.dart';
 import '../../models/appliance.dart';
 import '../../models/path.dart';
 import '../../models/small_ware.dart';
+import 'created_recipes/created_recipes_controller.dart';
 import 'profile_model.dart';
 
 final profileProvider = StateNotifierProvider<ProfileController, ProfileModel>(
-    (_) => ProfileController());
+    (ref) => ProfileController(ref: ref));
 
 class ProfileController extends StateNotifier<ProfileModel> {
-  ProfileController() : super(const ProfileModel());
+  ProfileController({required this.ref}) : super(const ProfileModel());
+
+  final Ref ref;
 
   Future<void> load() async {
     final profileJson = await Database.currentProfile();
@@ -78,5 +81,9 @@ class ProfileController extends StateNotifier<ProfileModel> {
     }
 
     state = state.copyWith(smallWares: smallWares);
+  }
+
+  void setupCreatedRecipes() {
+    ref.read(createdRecipesProvider.notifier).setupRecipesStream();
   }
 }

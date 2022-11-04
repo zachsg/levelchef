@@ -20,8 +20,8 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Recipe {
-  int? get id => throw _privateConstructorUsedError;
-  set id(int? value) => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  set id(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -80,7 +80,7 @@ abstract class $RecipeCopyWith<$Res> {
       _$RecipeCopyWithImpl<$Res, Recipe>;
   @useResult
   $Res call(
-      {int? id,
+      {String? id,
       @JsonKey(name: 'updated_at') String updatedAt,
       @JsonKey(name: 'owner_id') String ownerId,
       String name,
@@ -132,7 +132,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -204,7 +204,7 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
+      {String? id,
       @JsonKey(name: 'updated_at') String updatedAt,
       @JsonKey(name: 'owner_id') String ownerId,
       String name,
@@ -253,7 +253,7 @@ class __$$_RecipeCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -343,7 +343,7 @@ class _$_Recipe implements _Recipe {
       _$$_RecipeFromJson(json);
 
   @override
-  int? id;
+  String? id;
   @override
   @JsonKey(name: 'updated_at')
   String updatedAt;
@@ -410,7 +410,7 @@ class _$_Recipe implements _Recipe {
 
 abstract class _Recipe implements Recipe {
   factory _Recipe(
-      {int? id,
+      {String? id,
       @JsonKey(name: 'updated_at') required String updatedAt,
       @JsonKey(name: 'owner_id') required String ownerId,
       required String name,
@@ -430,8 +430,8 @@ abstract class _Recipe implements Recipe {
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
 
   @override
-  int? get id;
-  set id(int? value);
+  String? get id;
+  set id(String? value);
   @override
   @JsonKey(name: 'updated_at')
   String get updatedAt;
