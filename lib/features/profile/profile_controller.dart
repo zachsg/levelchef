@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:levelchef/services/database.dart';
+import 'package:levelchef/services/storage.dart';
 
 import '../../models/allergy.dart';
 import '../../models/appliance.dart';
@@ -31,6 +35,11 @@ class ProfileController extends StateNotifier<ProfileModel> {
   void setName(String name) => state = state.copyWith(name: name);
 
   void setEmail(String email) => state = state.copyWith(email: email);
+
+  Future<void> setAvatar(XFile file) async {
+    final url = await Storage.saveAvatar(file);
+    state = state.copyWith(avatar: url);
+  }
 
   void setHandle(String handle) => state = state.copyWith(handle: handle);
 

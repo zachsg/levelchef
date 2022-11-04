@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../profile_controller.dart';
+import 'avatar_display_widget.dart';
 
 class ProfileHeaderWidget extends ConsumerWidget {
   const ProfileHeaderWidget({super.key});
@@ -12,7 +13,7 @@ class ProfileHeaderWidget extends ConsumerWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          const Icon(Icons.face, size: 84),
+          const AvatarDisplayWidget(),
           const SizedBox(width: 8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

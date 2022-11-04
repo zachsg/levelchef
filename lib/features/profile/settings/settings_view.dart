@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -46,6 +47,12 @@ class SettingsView extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],
+            ),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () async =>
+                  await ref.read(settingsProvider.notifier).chooseAvatar(),
+              child: const AvatarWidget(),
             ),
             const NameTextFieldWidget(),
             const HandleTextFieldWidget(),

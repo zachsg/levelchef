@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:levelchef/services/auth.dart';
 
 import '../../auth/auth_controller.dart';
@@ -24,6 +27,29 @@ class SettingsController extends StateNotifier<SettingsModel> {
   void setName(String name) => ref.read(profileProvider.notifier).setName(name);
 
   String get email => ref.watch(profileProvider).email;
+
+  String get avatar => ref.watch(profileProvider).avatar;
+
+  Future<void> chooseAvatar() async {
+    final ImagePicker picker = ImagePicker();
+
+    try {
+      final XFile? file = await picker.pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 64,
+        maxHeight: 64,
+        imageQuality: 1,
+      );
+
+      if (file != null) {
+        // TODO: Set loading true
+        await ref.read(profileProvider.notifier).setAvatar(file);
+        // TODO: Set loading false
+      }
+    } catch (e) {
+      // TODO: Handle file picker error
+    }
+  }
 
   String get handle => ref.watch(profileProvider).handle;
 
