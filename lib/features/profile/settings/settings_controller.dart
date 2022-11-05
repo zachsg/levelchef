@@ -36,9 +36,6 @@ class SettingsController extends StateNotifier<SettingsModel> {
     try {
       final XFile? file = await picker.pickImage(
         source: ImageSource.gallery,
-        maxWidth: 64,
-        maxHeight: 64,
-        imageQuality: 1,
       );
 
       if (file != null) {

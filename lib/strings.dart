@@ -51,3 +51,6 @@ const noRecipeCreatedLabel = 'You haven\'t created any recipes yet';
 
 /// Created recipe
 const newRecipeLabel = 'New Recipe';
+const recipeNameLabel = 'Recipe Name';
+const cookTimeLabel = 'Cook Time';
+const prepTimeLabel = 'Prep Time';

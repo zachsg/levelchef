@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:levelchef/extensions.dart';
 import 'package:levelchef/models/recipe.dart';
 import 'package:levelchef/strings.dart';
 
 import 'created_recipe/created_recipe_view.dart';
 import 'created_recipes_controller.dart';
+import 'widgets/xwidgets.dart';
 
 class CreatedRecipesView extends ConsumerStatefulWidget {
   const CreatedRecipesView({super.key});
@@ -42,8 +44,23 @@ class _CreatedRecipesViewState extends ConsumerState<CreatedRecipesView> {
                 final recipe =
                     Recipe.fromJson(doc.data() as Map<String, dynamic>);
 
+                final minutesString = '${recipe.cookTime + recipe.prepTime}';
+                final ingredientsString = '${recipe.ingredients.length}';
+                final dietsString =
+                    recipe.diets.map((e) => e.name.capitalize()).join(', ');
+                final allergiesString =
+                    recipe.allergies.map((e) => e.name.capitalize()).join(', ');
+
                 return ListTile(
+                  leading: RecipePhotoWidget(recipe: recipe),
                   title: Text(recipe.name),
+                  subtitle: RecipeSubtitleWidget(
+                    minutes: minutesString,
+                    ingredients: ingredientsString,
+                    diets: dietsString.isEmpty ? 'None' : dietsString,
+                    allergies:
+                        allergiesString.isEmpty ? 'None' : allergiesString,
+                  ),
                   onTap: () {
                     ref
                         .read(createdRecipesProvider.notifier)

@@ -29,13 +29,24 @@ class Storage {
     return '';
   }
 
-  static Future<bool> saveRecipePhoto(Image image) async {
+  static Future<String> saveRecipePhoto(XFile file) async {
     try {
-      // TODO: Handle recipe photo saving
-      return true;
+      final imageX = decodeImage(File(file.path).readAsBytesSync());
+
+      if (imageX != null) {
+        final f = await _scaleFileDown(imageX, file);
+        final recipeRef = _storage.child('$_recipesPath${file.name}');
+        await recipeRef.putFile(f);
+        final url = await recipeRef.getDownloadURL();
+
+        return url;
+      }
     } catch (e) {
-      return false;
+      // TODO: Handle error.
+      print(e);
     }
+
+    return '';
   }
 
   static Future<File> _scaleFileDown(Image image, XFile file) async {

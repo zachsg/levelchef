@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:levelchef/models/recipe.dart';
 import 'package:levelchef/models/recipe_type.dart';
 import 'package:levelchef/services/auth.dart';
 import 'package:levelchef/services/database.dart';
+import 'package:levelchef/services/storage.dart';
 
 import 'created_recipe_model.dart';
 
@@ -27,9 +29,55 @@ class CreatedRecipeController extends StateNotifier<CreatedRecipeModel> {
 
   final Ref ref;
 
-  void setIsNewRecipe(bool isNew) => state = state.copyWith(isNew: isNew);
+  void setIsNewRecipe(bool isNew) {
+    final recipe = Recipe(
+      updatedAt: DateTime.now().toIso8601String(),
+      ownerId: Auth.instance.currentUser!.uid,
+      name: '',
+      recipeType: RecipeType.dinner,
+    );
+
+    state = state.copyWith(isNew: isNew, recipe: recipe);
+  }
 
   void loadRecipe(Recipe recipe) => state = state.copyWith(recipe: recipe);
+
+  void setName(String name) {
+    final recipe = state.recipe.copyWith(name: name);
+    state = state.copyWith(recipe: recipe);
+  }
+
+  Future<void> choosePhoto() async {
+    final ImagePicker picker = ImagePicker();
+
+    try {
+      final XFile? file = await picker.pickImage(
+        source: ImageSource.gallery,
+      );
+
+      if (file != null) {
+        state = state.copyWith(isLoading: true);
+
+        final url = await Storage.saveRecipePhoto(file);
+        final recipe = state.recipe.copyWith(imageUrl: url);
+        state = state.copyWith(recipe: recipe);
+
+        state = state.copyWith(isLoading: false);
+      }
+    } catch (e) {
+      // TODO: Handle file picker error
+    }
+  }
+
+  void setCookTime(int cookTime) {
+    final recipe = state.recipe.copyWith(cookTime: cookTime);
+    state = state.copyWith(recipe: recipe);
+  }
+
+  void setPrepTime(int prepTime) {
+    final recipe = state.recipe.copyWith(prepTime: prepTime);
+    state = state.copyWith(recipe: recipe);
+  }
 
   Future<void> save() async {
     state = state.copyWith(isLoading: true);

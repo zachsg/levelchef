@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:levelchef/strings.dart';
 
 import 'created_recipe_controller.dart';
+import 'widgets/xwidgets.dart';
 
 class CreatedRecipeView extends ConsumerWidget {
   const CreatedRecipeView({super.key});
@@ -34,7 +35,24 @@ class CreatedRecipeView extends ConsumerWidget {
         ],
       ),
       body: Column(
-        children: [],
+        children: [
+          const RecipeNameTextField(),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () =>
+                      ref.read(createdRecipeProvider.notifier).choosePhoto(),
+                  child: const RecipePhotoWidget(),
+                ),
+                const SizedBox(width: 8),
+                PrepTimePickerWidget(),
+                CookTimePickerWidget(),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
