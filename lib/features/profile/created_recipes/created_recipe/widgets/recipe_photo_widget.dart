@@ -25,13 +25,13 @@ class RecipePhotoWidget extends ConsumerWidget {
           fit: BoxFit.cover,
           imageUrl: ref.watch(createdRecipeProvider).recipe.imageUrl,
           placeholder: (context, url) => Icon(
-            Icons.no_food,
-            size: 88,
+            Icons.photo_camera,
+            size: 72,
             color: Theme.of(context).colorScheme.primary,
           ),
           errorWidget: (context, url, error) => Icon(
-            Icons.error,
-            size: 88,
+            Icons.photo_camera,
+            size: 72,
             color: Theme.of(context).colorScheme.primary,
           ),
         ),

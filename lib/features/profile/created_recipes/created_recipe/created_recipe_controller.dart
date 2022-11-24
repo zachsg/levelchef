@@ -103,6 +103,10 @@ class CreatedRecipeController extends StateNotifier<CreatedRecipeModel> {
 
   final _chars = '0123456789';
   final Random _rnd = Random();
-  String _getRandomString(int length) => String.fromCharCodes(Iterable.generate(
-      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+  String _getRandomString(int length) => String.fromCharCodes(
+        Iterable.generate(
+          length,
+          (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length)),
+        ),
+      );
 }

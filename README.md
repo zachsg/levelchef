@@ -8,6 +8,7 @@
 - `flutter clean`
 - `flutter pub get`
 - Delete Podfile.lock
+- Cd to `ios` directory
 - `arch -x86_64 pod repo update`
 - `arch -x86_64 pod install`
 

@@ -14,7 +14,7 @@ class Storage {
       final imageX = decodeImage(File(file.path).readAsBytesSync());
 
       if (imageX != null) {
-        final f = await _scaleFileDown(imageX, file);
+        final f = await _scaleImageDown(imageX, file);
         final avatarRef = _storage.child('$_avatarsPath${file.name}');
         await avatarRef.putFile(f);
         final url = await avatarRef.getDownloadURL();
@@ -23,7 +23,6 @@ class Storage {
       }
     } catch (e) {
       // TODO: Handle error.
-      print(e);
     }
 
     return '';
@@ -34,7 +33,7 @@ class Storage {
       final imageX = decodeImage(File(file.path).readAsBytesSync());
 
       if (imageX != null) {
-        final f = await _scaleFileDown(imageX, file);
+        final f = await _scaleImageDown(imageX, file);
         final recipeRef = _storage.child('$_recipesPath${file.name}');
         await recipeRef.putFile(f);
         final url = await recipeRef.getDownloadURL();
@@ -43,20 +42,17 @@ class Storage {
       }
     } catch (e) {
       // TODO: Handle error.
-      print(e);
     }
 
     return '';
   }
 
-  static Future<File> _scaleFileDown(Image image, XFile file) async {
+  static Future<File> _scaleImageDown(Image image, XFile file) async {
     final thumbnail = copyResize(image, width: 800);
 
     final extension = file.path.split('.').last;
     final reducedPath = '${file.path}reduced.$extension';
 
-    File f = await File(reducedPath).writeAsBytes(encodePng(thumbnail));
-
-    return f;
+    return await File(reducedPath).writeAsBytes(encodePng(thumbnail));
   }
 }
